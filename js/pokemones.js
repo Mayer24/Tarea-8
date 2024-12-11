@@ -20,6 +20,9 @@ document.addEventListener ("DOMContentLoaded", () => {
           nombre: data.name,
           hp: data.stats [0].base_stat,
           experiencia: data.base_experience,
+          ataque: data.stats[1].base_stat,
+          especial: data.stats[3].base_stat,
+          defensa: data.stats[2].base_stat,
   
         }
         pintarCard (pokemon)
@@ -40,6 +43,10 @@ document.addEventListener ("DOMContentLoaded", () => {
     clone.querySelector('.card-body-img').setAttribute('src', pokemon.img) //Element.setAttribute (name, value); 
     clone.querySelector ('.card-body-title').innerHTML = `${pokemon.nombre} <span>${pokemon.hp} HP </span>`
     clone.querySelector('.card-body-text').textContent = pokemon.experiencia + ' Exp'
+    clone.querySelectorAll ('.card-footer-social h3') [0].textContent = pokemon.ataque + 'k'
+    clone.querySelectorAll ('.card-footer-social h3') [1].textContent = pokemon.especial + 'k'
+    clone.querySelectorAll ('.card-footer-social h3') [2].textContent = pokemon.defensa + 'k'  
+
     //pasa el clone al fragment
     fragment.appendChild(clone)
     flex.appendChild(fragment)
